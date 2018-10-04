@@ -1,7 +1,7 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import Enum
 from random import choice
-from typing import Set
+from typing import Set, List
 
 
 class Auxilaries(str, Enum):
@@ -40,6 +40,9 @@ class Verb:
         return (
             f"{self.infinitive:30} | {self.perfectum:30} ({self.english_translation})"
         )
+
+    def __format__(self, format_spec):
+        return self.__str__().__format__(format_spec)
 
 
 shortcuts = {
@@ -175,12 +178,14 @@ verbs: Set[Verb] = {
 class ScoredVerb:
     verb: Verb
     tries: int = 0
+    inputs: List[Perfectum] = field(default_factory=list)
 
     def __hash__(self):
         return hash(self.verb)
 
     def __str__(self):
-        return f"{self.tries - 1:>3} errors: {self.verb}"
+        plural = 's' if self.tries > 2 else ''
+        return f"{self.tries - 1:>3} error{plural}: {self.verb:90} | {' - '.join(str(p) for p in self.inputs)}"
 
 
 def main():
@@ -198,13 +203,18 @@ def main():
                     v.tries += 1
                     verbs_done.add(v)
             break
+        except Exception as err:
+            print(err)
+            raise
         if aux in shortcuts:
             aux = shortcuts[aux]
-        if Perfectum(Auxilaries(aux), v) == verb.verb.perfectum:
+        perf = Perfectum(Auxilaries(aux), v)
+        if perf == verb.verb.perfectum:
             print(f"Correct! (english: {verb.verb.english_translation})")
             verbs_to_be_done.remove(verb)
             verbs_done.add(verb)
         else:
+            verb.inputs.append(perf)
             print(
                 f"Wrong. The answer is {verb.verb.perfectum.auxiliary} {verb.verb.perfectum.verb} "
                 f"(english: {verb.verb.english_translation})."
