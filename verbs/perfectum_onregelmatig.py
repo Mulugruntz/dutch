@@ -1,13 +1,30 @@
+import textwrap
 from random import choice
-from typing import Set
+from typing import Set, Tuple, FrozenSet
+
+import click
 
 from verbs.data import verbs
 from verbs.structures import Auxilaries, Perfectum, ScoredVerb, shortcuts
 
 
-def main():
-    verbs_to_be_done: Set[ScoredVerb] = {ScoredVerb(verb) for verb in verbs}
+# Monkey-patch to have spaces not striped in the doc/usage.
+import inspect
+import click.formatting
+inspect.cleandoc = lambda s: s.split('\n')[0] + '\n' + textwrap.dedent('\n'.join(s.split('\n')[1:]))
+click.formatting.wrap_text = lambda s, *args, **kwargs: s
+
+
+def main(sessions: FrozenSet[int]):
+    verbs_to_be_done: Set[ScoredVerb] = {
+        ScoredVerb(verb) for session in sessions for verb in verbs[session - 1]
+    }
     verbs_done = set()
+
+    print(
+        f"Loaded session{'s' if len(sessions) > 1 else ''} {', '.join(str(s) for s in sorted(sessions))}: "
+        f"{len(verbs_to_be_done)} verbs."
+    )
 
     while verbs_to_be_done:
         verb: ScoredVerb = choice(tuple(verbs_to_be_done))
@@ -47,5 +64,24 @@ def main():
     print("\n".join(str(v) for v in ordered_scores))
 
 
+@click.command('perfectum')
+@click.argument('sessions', nargs=-1, type=int)
+def cli(sessions: Tuple[int]):
+    """This tool is used to help memorizing irregular verbs in Dutch.
+
+    Argument:
+
+        SESSIONS:       A list of session numbers (1, 2, 3, 4).
+                        Used to only load some sessions.
+                        Default: 1 (only session 1 gets loaded)
+
+    """
+    if not sessions:
+        sessions = frozenset([1])
+    else:
+        sessions = frozenset(s for s in sessions if 0 < s <= len(verbs))
+    main(sessions)
+
+
 if __name__ == "__main__":
-    main()
+    cli()
