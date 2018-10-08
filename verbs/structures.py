@@ -55,7 +55,7 @@ class ScoredVerb:
 
     def __str__(self):
         plural = 's' if self.tries > 2 else ''
-        return f"{self.tries - 1:>3} error{plural}: {self.verb:90} | {' - '.join(str(p) for p in self.inputs)}"
+        return f"{self.tries - 1:>3} error{plural}: {self.verb:95} | {' - '.join(str(p) for p in self.inputs)}"
 
 
 shortcuts = {

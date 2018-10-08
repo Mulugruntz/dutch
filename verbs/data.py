@@ -122,7 +122,121 @@ verbs: List[Set[Verb]] = [
             english_translation="to pour",
         ),
     },
-    {
-
+    {  # Session 2
+        Verb(
+            "hangen",
+            perfectum=Perfectum(Auxilaries.HEBBEN, "gehangen"),
+            english_translation="to hang",
+        ),
+        Verb(
+            "hebben",
+            perfectum=Perfectum(Auxilaries.HEBBEN, "gehad"),
+            english_translation="to have",
+        ),
+        Verb(
+            "helpen",
+            perfectum=Perfectum(Auxilaries.HEBBEN, "geholpen"),
+            english_translation="to help",
+        ),
+        Verb(
+            "houden (van)",
+            perfectum=Perfectum(Auxilaries.HEBBEN, "gehouden"),
+            english_translation="to hold (to love)",
+        ),
+        Verb(
+            "innemen",
+            perfectum=Perfectum(Auxilaries.HEBBEN, "ingenomen"),
+            english_translation="to take (medicine)",
+        ),
+        Verb(
+            "kiezen",
+            perfectum=Perfectum(Auxilaries.HEBBEN, "gekozen"),
+            english_translation="to choose",
+        ),
+        Verb(
+            "kijken",
+            perfectum=Perfectum(Auxilaries.HEBBEN, "gekeken"),
+            english_translation="to look",
+        ),
+        Verb(
+            "komen",
+            perfectum=Perfectum(Auxilaries.ZIJN, "gekomen"),
+            english_translation="to come",
+        ),
+        Verb(
+            "kopen",
+            perfectum=Perfectum(Auxilaries.HEBBEN, "gekocht"),
+            english_translation="to buy",
+        ),
+        Verb(
+            "krijgen",
+            perfectum=Perfectum(Auxilaries.HEBBEN, "gekregen"),
+            english_translation="to receive",
+        ),
+        Verb(
+            "kunnen",
+            perfectum=Perfectum(Auxilaries.HEBBEN, "gekund"),
+            english_translation="to can",
+        ),
+        Verb(
+            "laten",
+            perfectum=Perfectum(Auxilaries.HEBBEN, "gelaten"),
+            english_translation="to leave",
+        ),
+        Verb(
+            "lezen",
+            perfectum=Perfectum(Auxilaries.HEBBEN, "gelezen"),
+            english_translation="to read",
+        ),
+        Verb(
+            "liggen",
+            perfectum=Perfectum(Auxilaries.HEBBEN, "gelegen"),
+            english_translation="to lie (lay)",
+        ),
+        Verb(
+            "lopen",
+            perfectum=Perfectum(Auxilaries.BOTH, "gelopen"),
+            english_translation="to walk",
+        ),
+        Verb(
+            "meenemen",
+            perfectum=Perfectum(Auxilaries.HEBBEN, "meegenomen"),
+            english_translation="to take along/with",
+        ),
+        Verb(
+            "moeten",
+            perfectum=Perfectum(Auxilaries.HEBBEN, "gemoeten"),
+            english_translation="to must",
+        ),
+        Verb(
+            "mogen",
+            perfectum=Perfectum(Auxilaries.HEBBEN, "gemogen"),
+            english_translation="to may",
+        ),
+        Verb(
+            "nakijken",
+            perfectum=Perfectum(Auxilaries.HEBBEN, "nagekeken"),
+            english_translation="to check / to look at",
+        ),
+        Verb(
+            "nemen",
+            perfectum=Perfectum(Auxilaries.HEBBEN, "genomen"),
+            english_translation="to take",
+        ),
+        Verb(
+            "onderzoeken",
+            perfectum=Perfectum(Auxilaries.HEBBEN, "onderzocht"),
+            english_translation="to examine / to investigate",
+        ),
+        Verb(
+            "ontbijten",
+            perfectum=Perfectum(Auxilaries.HEBBEN, "ontbeten"),
+            english_translation="to have breakfast",
+        ),
+        Verb(
+            "opstaan",
+            perfectum=Perfectum(Auxilaries.ZIJN, "opgestaan"),
+            english_translation="to get up / to stand up",
+        ),
     }
 ]
