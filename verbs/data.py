@@ -389,7 +389,7 @@ verbs: List[Set[Verb]] = [
         ),
         Verb(
             "vinden",
-            perfectum=Perfectum(Auxilaries.HEBBEN, "gevongen"),
+            perfectum=Perfectum(Auxilaries.HEBBEN, "gevonden"),
             english_translation="to find",
         ),
         Verb(
@@ -477,11 +477,11 @@ verbs: List[Set[Verb]] = [
             perfectum=Perfectum(Auxilaries.HEBBEN, "gezocht"),
             english_translation="to search",
         ),
-        Verb(
-            "zullen",
-            perfectum=Perfectum(Auxilaries.HEBBEN, "-"),
-            english_translation="to shall",
-        ),
+        # Verb(
+        #     "zullen",
+        #     perfectum=Perfectum(Auxilaries.HEBBEN, "-"),
+        #     english_translation="to shall",
+        # ),
         Verb(
             "zwemmen",
             perfectum=Perfectum(Auxilaries.BOTH, "gezwommen"),
